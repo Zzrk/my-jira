@@ -1,48 +1,47 @@
+import React from "react";
 import { useAuth } from "context/auth-context";
-import React, { FormEvent } from "react";
-import { Form, Input, Button } from "antd";
+import { Form, Input } from "antd";
+import { LongButton } from "unauthenticated-app/index";
 
+// interface Base {
+//   id: number
+// }
+//
+// interface Advance extends Base {
+//   name: string
+// }
+//
+// const test = (p: Base) => {
+// }
+//
+// // 鸭子类型(duck typing)：面向接口编程 而不是 面向对象编程
+// const a = {id: 1, name: 'jack'}
+// test(a)
 const apiUrl = process.env.REACT_APP_API_URL;
-
 export const LoginScreen = () => {
   const { login, user } = useAuth();
-
-  // const login = (param: { username: string; password: string }) => {
-  //   fetch(`${apiUrl}/login`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(param),
-  //   }).then(async (response) => {
-  //     if (response.ok) {
-  //     }
-  //   });
-  // };
-
+  // HTMLFormElement extends Element
   const handleSubmit = (values: { username: string; password: string }) => {
     login(values);
   };
-
   return (
     <Form onFinish={handleSubmit}>
-      {/* {user ? <div>登陆成功，用户名：{user?.name}</div> : null} */}
       <Form.Item
-        name="username"
+        name={"username"}
         rules={[{ required: true, message: "请输入用户名" }]}
       >
-        <Input placeholder="用户名" type="text" id="username" />
+        <Input placeholder={"用户名"} type="text" id={"username"} />
       </Form.Item>
       <Form.Item
-        name="password"
+        name={"password"}
         rules={[{ required: true, message: "请输入密码" }]}
       >
-        <Input placeholder="密码" type="password" id="password" />
+        <Input placeholder={"密码"} type="password" id={"password"} />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <LongButton htmlType={"submit"} type={"primary"}>
           登录
-        </Button>
+        </LongButton>
       </Form.Item>
     </Form>
   );
