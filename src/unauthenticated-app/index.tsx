@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { RegisterScreen } from "unauthenticated-app/register";
 import { LoginScreen } from "unauthenticated-app/login";
-// import { Button, Card, Divider } from "antd";
+import { Button, Card, Divider } from "antd";
 // import styled from "@emotion/styled";
 // import logo from "assets/logo.svg";
 // import left from "assets/left.svg";
@@ -35,11 +35,13 @@ export const UnauthenticatedApp = () => {
   //   </Container>
   // );
   return (
-    <div>
-      {isRegister ? <RegisterScreen /> : <LoginScreen />}
-      <button onClick={() => setIsRegister(!isRegister)}>
-        切换到{isRegister ? "登录" : "注册"}
-      </button>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <Card>
+        {isRegister ? <RegisterScreen /> : <LoginScreen />}
+        <button onClick={() => setIsRegister(!isRegister)}>
+          切换到{isRegister ? "登录" : "注册"}
+        </button>
+      </Card>
     </div>
   );
 };
