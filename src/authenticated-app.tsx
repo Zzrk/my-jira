@@ -4,7 +4,7 @@ import { useAuth } from "context/auth-context";
 import { ReactComponent as SoftwareLogo } from "assets/software-logo.svg";
 import styled from "@emotion/styled";
 import { Row } from "components/lib";
-import { Dropdown, Menu } from "antd";
+import { Button, Dropdown, Menu } from "antd";
 
 /**
  * grid 和 flex 各自的应用场景
@@ -17,7 +17,6 @@ import { Dropdown, Menu } from "antd";
  * 从布局出发，用grid
  *
  */
-
 export const AuthenticatedApp = () => {
   const { logout, user } = useAuth();
   return (
@@ -33,12 +32,16 @@ export const AuthenticatedApp = () => {
             overlay={
               <Menu>
                 <Menu.Item key={"logout"}>
-                  <a onClick={logout}>登出</a>
+                  <Button onClick={logout} type={"link"}>
+                    登出
+                  </Button>
                 </Menu.Item>
               </Menu>
             }
           >
-            <a onClick={(e) => e.preventDefault()}>Hi, {user?.name}</a>
+            <Button type={"link"} onClick={(e) => e.preventDefault()}>
+              Hi, {user?.name}
+            </Button>
           </Dropdown>
         </HeaderRight>
       </Header>
@@ -48,13 +51,11 @@ export const AuthenticatedApp = () => {
     </Container>
   );
 };
-
 const Container = styled.div`
   display: grid;
   grid-template-rows: 6rem 1fr;
   height: 100vh;
 `;
-
 // grid-area 用来给grid子元素起名字
 const Header = styled(Row)`
   padding: 3.2rem;
